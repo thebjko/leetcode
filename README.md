@@ -1,2 +1,2 @@
 # leetcode
-LeetCode 기록
+LeetCode study notes
