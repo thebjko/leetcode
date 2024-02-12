@@ -1,0 +1,48 @@
+# [Majority Elements](https://leetcode.com/problems/majority-element/description/?envType=daily-question&envId=2024-02-12)
+
+> In the given list of numbers, return one that occurs more than `n/2` times.
+
+
+## My Solution
+
+```python
+class Solution:
+    def majorityElement(self, nums: List[int]) -> int:
+        counter = Counter(nums)
+        result = 0
+        temp = -1
+        for k, v in counter.items():
+            if v > temp:
+                temp = v
+                result = k
+        return result
+```
+
+> This was quite easy, because I could count all the numbers and returns its maximum count. But the challenge was to do the task in space of `O(1)`.
+
+## [Moore's Voting Algorithm](https://leetcode.com/problems/majority-element/solutions/4713694/beats-100-users-c-java-python-javascript-2-approaches-explained/?envType=daily-question&envId=2024-02-12)
+
+This is to do the task in space of `O(1)`.
+
+```python
+class Solution:
+    def majorityElement(self, nums: List[int]) -> int:
+        count = 0
+        element = 0
+
+        for num in nums:
+            if count == 0:
+                element = num
+                count = 1
+            elif element == num:
+                count += 1
+            else:
+                count -= 1
+
+        return element
+```
+
+1. Declare `count` and `element` variables.
+2. As we loop through, add 1 to count if the current element is same as what is on the `element` variable, and subtract if not.
+
+This will work, because we are trying to find the element whose count is more than `n/2`. Say you have `[1, 2, 3, 1, 2, 1, 1]`. Whenever `count` is `0`, `element` will change. So, in this list, until the second to the last element, `element` is 2. However, as you reach the second to the last, `element` will hold 1.
