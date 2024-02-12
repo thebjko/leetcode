@@ -46,3 +46,14 @@ class Solution:
 2. As we loop through, add 1 to count if the current element is same as what is on the `element` variable, and subtract if not.
 
 This will work, because we are trying to find the element whose count is more than `n/2`. Say you have `[1, 2, 3, 1, 2, 1, 1]`. Whenever `count` is `0`, `element` will change. So, in this list, until the second to the last element, `element` is 2. However, as you reach the second to the last, `element` will hold 1.
+
+If the element has count more than or equal to 0, the answer is correct, and it will always be the case, because it is given contition.
+
+An user named "mercer80" left a comment on how this algorithem works:
+
+> Think of it as a game, where many groups are fighting for the throne.
+Each group has its own army. Any soldier can kill other group’s
+soldier only by suicidal attack. Now no matter who ever fights
+with whom, or how it starts, the one with more than half will
+always win. In worst half case, every group is aiming for
+the biggest group and nobody wins.
